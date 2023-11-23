@@ -12,19 +12,10 @@ public class RPS {
     // generate computer's choice
     String computer = ""; // computer's RPS choice
     Random rng = new Random(); // randomly generate number 0-2
-    int gen = rng.nextInt(3);
+    int gen = 5;
     boolean guaranteeWin = false;
     boolean lizardSpock = false;
     
-    // Each randomly generated number corresponds to an RPS choice
-    if (gen == 0) {
-      computer = "ROCK";
-    } else if (gen == 1) {
-      computer = "SCISSORS";
-    } else if (gen == 2) {
-      computer = "PAPER";
-    }
-  
     // start the game
     Scanner in = new Scanner(System.in); // prompt user for input
     
@@ -39,6 +30,18 @@ public class RPS {
     
     while (!user.toUpperCase().equals("EXIT")) {
       System.out.println("Make your choice:\nROCK / PAPER / SCISSORS / EXIT");
+      
+      gen = rng.nextInt(3);
+      
+      // Each randomly generated number corresponds to an RPS choice
+      if (gen == 0) {
+        computer = "ROCK";
+      } else if (gen == 1) {
+        computer = "SCISSORS";
+      } else if (gen == 2) {
+        computer = "PAPER"; 
+      }
+      
       user = in.nextLine();
       if (user.toUpperCase().equals("EXIT")) { break; }
       
@@ -48,7 +51,7 @@ public class RPS {
       System.out.println("Computer says: " + computer);
       playGame(user, computer);
       System.out.println();
-      
+      gen = rng.nextInt(3);
     }//end of while loop
     
   }//end of main method
